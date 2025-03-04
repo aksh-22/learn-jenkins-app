@@ -12,6 +12,8 @@ pipeline {
             steps {
                 script {
                     sh '''
+                        which docker
+                        docker --version
                         ls -la
                         node -v
                         npm -v
