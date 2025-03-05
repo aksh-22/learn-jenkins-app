@@ -1,14 +1,14 @@
 pipeline {
-    agent any
-
+    agent {
+        docker {
+            image 'node:18-alpine'
+            args '--user=root'  // Allows full permissions inside the container
+            reuseNode true
+        }
+    }
+    
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }
             steps {
                 script {
                     sh '''
