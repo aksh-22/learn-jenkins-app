@@ -14,6 +14,8 @@ pipeline {
                     sh '''
                         ls -la
                         node -v
+                        npm -v
+                        npm ci
                     '''
                 }
             }
