@@ -2,8 +2,7 @@ pipeline {
     agent {
         docker {
             image 'node:18-alpine'
-            args '--user=root'  // Allows full permissions inside the container
-            reuseNode true
+            args '-v /var/jenkins_home:/var/jenkins_home'
         }
     }
     
