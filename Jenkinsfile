@@ -1,13 +1,15 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18-alpine'
-            args '-v /var/jenkins_home:/var/jenkins_home'
-        }
-    }
-    
+    agent any
+
     stages {
         stage('Build') {
+            agent {
+                docker {
+                    image 'node:18-alpine'
+                    reuseNode true
+                    args '--user=root'  // Allows full permissions inside the container
+                }
+            }
             steps {
                 script {
                     sh '''
